@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <form method="post" action="'{% url 'login:setuser' %}'">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="hname">닉네임</label>
+            <input type="text" class="form-control" name="hname" id="hname"
+                   value="{{ form.hname.value|default_if_none:'' }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">변경하기</button>
+    </form>
+</div>
+{% endblock %}

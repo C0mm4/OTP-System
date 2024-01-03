@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <form method="POST" action="{% url 'login:regserial' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="serialcode">시리얼코드</label>
+            <input type="text" class="form-control" name="serialcode" id="serialcode"
+                   value="{{ form.serialcode.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">확인</button>
+        
+    </form>
+</div>
+{% endblock %}

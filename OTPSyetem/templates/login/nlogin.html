@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <form method="post" name = "hiddenForm" action="{% url 'login:nlogin' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <input type="hidden" name="username" id="username"
+                   value="{{ ID }}">
+        </div>
+        <div class="mb-3">
+            <input type="hidden" name="password" id="password"
+                   value="{{ PW }}">
+        </div>
+        <script type="text/javascript"> this.document.hiddenForm.submit();
+        </script>
+    </form>
+</div>
+{% endblock %}

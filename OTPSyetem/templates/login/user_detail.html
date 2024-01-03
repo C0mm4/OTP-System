@@ -1,0 +1,34 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <!-- 질문 -->
+
+    <h2> 사용자 정보</h2>
+
+    <br>
+    
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            
+            {% if request.user.is_authenticated %}
+            <div class="card-body">사용자 ID : {{ puser.username }}</div>
+            <hr>
+            <div class="card-body" >닉네임 : {{ tuser.hname }}</div>
+            <hr>
+            {% if reg %}    
+                <div class="card-body">Serial Doesn't regist.</div>
+                <hr>
+                <a class="nav-link" href="{% url 'login:regserial' %}">시리얼번호 등록</a>
+                
+            {% else %}
+                <div class="text">Serial Registed.</div>
+            {% endif %}
+            
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

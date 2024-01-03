@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3">
+    <form method="post" action="{% url 'login:OOTPlogin' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="otp">OTP</label>
+            <input type="text" class="form-control" name="otp" id="otp" required
+                    minlength="8" maxlength="8"
+                   value="{{ form.otp.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">확인</button>
+        
+    </form>
+</div>
+{% endblock %}
